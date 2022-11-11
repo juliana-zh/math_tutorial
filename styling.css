@@ -1,11 +1,20 @@
 body {
   font: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 #container {
-  width: 1050px;
+  width: 90%;
   height: 100px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 h1 a {
@@ -16,23 +25,27 @@ h1 a {
 }
 
 #header {
-  height: 100px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #searchBox {
-  float: right;
   background: -webkit-linear-gradient(#ffc473, #ffae40);
   background: -o-linear-gradient(#ffc473, #ffae40);
   background: -moz-linear-gradient(#ffc473, #ffae40);
   background: linear-gradient(#ffc473, #ffae40);
-  width: 400px;
-  height: 50px;
-  padding: 20px 20px 0 20px;
-  margin: 15px 0 15px 15px;
+  min-width: 400px;
+  padding: 20px;
+  margin: 15px 0 15px 0;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #brand {
-  float: left;
+  flex: 1;
+  min-width: 400px;
 }
 
 .text {
@@ -55,38 +68,31 @@ h1 a {
 }
 
 #menu {
-  height: 70px;
   background: -webkit-linear-gradient(#66a1d2, #3f8fd2);
   background: -o-linear-gradient(#66a1d2, #3f8fd2);
   background: -moz-linear-gradient(#66a1d2, #3f8fd2);
   background: linear-gradient(#66a1d2, #3f8fd2);
   /* background: linear-gradient(#0B5FA5, #25547B)  ; */
-  padding: 7px 0;
+  padding: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .clear {
   clear: both;
 }
 
-ul {
-  list-style: none;
-  height: 30px;
-  margin: 0;
-  padding: 20px 0 20px 40px;
-}
-
-#menu ul li {
-  float: left;
+#menu a {
   padding: 4px 30px;
-  height: 20px;
+  height: 30px;
   border-right: 1px solid #ffe0b4;
 }
 
-#menu ul li:last-child {
+#menu a:last-child {
   border-right: none;
 }
 
-#menu ul li a {
+#menu a {
   text-decoration: none;
   text-transform: uppercase;
   font-size: 17px;
@@ -100,10 +106,28 @@ ul {
   transition: font-size 0.3s ease;
 }
 
-#menu ul li a:hover,
-#menu ul li a.active {
+#searchBox form {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+#menu a:hover,
+#menu a.active {
   font-size: 20px;
   color: #f7e8d2;
+}
+
+/* Small screens: vertical menu */
+@media screen and (max-width: 700px) {
+  #menu {
+    flex-direction: column;
+    align-content: center;
+  }
+
+  #menu a {
+    border-right: none;
+  }
 }
 
 #introduction {
@@ -127,16 +151,18 @@ ul {
   text-align: justify;
 }
 
+.sidebarWrapper {
+  flex: 50%;
+  padding: 5px;
+}
+
 .sidebar {
-  width: 450px;
-  min-height: 800px;
+  min-width: 300px;
+  height: 100%;
+  /* min-height: 800px; */
   border: 1px solid #66a1d2;
   border-radius: 10px;
   padding: 10px 30px;
-}
-
-#leftsidebar {
-  float: left;
 }
 
 #leftsidebar ul {
@@ -152,14 +178,10 @@ ul {
 #rightsidebar ul li {
   background: url(./images/LogoMakr-5Ln4kh.png) no-repeat left center;
   padding: 17px 0 17px 40px;
-}
-
-#rightsidebar {
-  float: right;
+  list-style-type: none;
 }
 
 #rightsidebar ul {
-  float: right;
   padding-left: 10px;
   padding-top: 0;
   min-height: 400px;
@@ -188,9 +210,8 @@ ul {
 }
 
 .picture_desc {
-  position: relative;
-  left: 200px;
-  top: 50px;
+  width: 50%;
+  float: right;
 }
 
 .footer {
@@ -200,11 +221,17 @@ ul {
   background: -moz-linear-gradient(#66a1d2, #3f8fd2);
   background: linear-gradient(#66a1d2, #3f8fd2);
   color: #ffe0b4;
-  margin: 15px 0;
+  margin-top: auto;
   padding: 10px 20px;
+  height: 100%;
 }
 
 .footer a {
   color: #ffae40;
   text-decoration: none;
+}
+
+.sidebars {
+  display: flex;
+  flex-wrap: wrap;
 }
